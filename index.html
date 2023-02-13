@@ -24,51 +24,20 @@
         transform: translateX(-50%);
       }
 
-      .button {
-        background-color: white;
-        color: #4a148c;
-        padding: 10px 20px;
-        border-radius: 20px;
-        border: 1px solid #4a148c;
-        font-size: 20px;
-        position: absolute;
-        left: 20px;
-        top: 20px;
-        cursor: pointer;
-        box-shadow: 5px 5px black;
-      }
-
-      .livestream {
-        display: none;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 1120px;
-        height: 630px;
-        background-color: white;
-        z-index: 1;
-      }
-      
-      .channel-list {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        margin-top: 20px;
-        margin-left: 20px;
-      }
-
       .channel {
-        background-color: white;
+        background-color: rgb(255, 255, 255);
         color: #4a148c;
         padding: 10px 20px;
         border-radius: 20px;
         border: 1px solid #4a148c;
         font-size: 20px;
         margin: 10px 0;
+        width: 200px;
+        height: 50px;
+        text-align: center;
         user-select: none;
         cursor: pointer;
+        box-shadow: 5px 5px black;
       }
 
       .channel-name {
@@ -78,6 +47,42 @@
       .channel-status {
         font-style: italic;
       }
+
+      .livestream {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        width: 64vw;
+        height: 70vh;
+        background-color: linear-gradient(to bottom, #7b1fa2, #4a148c);
+        z-index: 1;
+      }
+
+      .channel-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: center;
+        margin-top: 20px;
+        visibility: visible;
+      }
+
+      #youtube-stream {
+        width: 64vw;
+        height: 70vh;
+      }
+
+      .lightbulb {
+        font-size: 50px;
+        color: white;
+        cursor: pointer;
+        text-shadow: 5px 5px black;
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+      }
     </style>
   </head>
   <body>
@@ -86,45 +91,62 @@
         <p class="channel-name">SullyBoi</p>
       </div>
       <div class="channel" id="channel2">
-        <p class="channel-name">Channel 2</p>
+        <p class="channel-name">Rusair</p>
       </div>
+     
       <div class="channel" id="channel3">
         <p class="channel-name">Channel 3</p>
-      </div><div class="channel" id="channel4">
-        <p class="channel-name">Channel 4</p>
+        </div>
+        <div class="channel" id="channel4">
+          <p class="channel-name">Channel 4</p>
+        </div>
+        <div class="channel" id="channel5">
+          <p class="channel-name">Channel 5</p>
+        </div>
       </div>
-      <div class="channel" id="channel5">
-        <p class="channel-name">Channel 5</p>
+      <h1>🗿 Lukeman TV 🗿</h1>
+
+      <div class="livestream">
+        <iframe id="youtube-stream" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in- picture" allowfullscreen></iframe>
       </div>
-    </div>
-
-    <h1>🗿 Lukeman TV 🗿</h1>
-
-    <div class="livestream">
-      <iframe id="youtube-stream" width="1120" height="630" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <script>
-      const channels = {
-        sullyboi: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
-        channel2: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
-        channel3: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
-        channel4: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
-        channel5: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1'
-      };
-
-      const channelList = document.querySelector('.channel-list');
-      const livestream = document.querySelector('.livestream');
-      const youtubeStream = document.querySelector('#youtube-stream');
-
-      channelList.addEventListener('click', (event) => {
-        const target = event.target;
-        if (target.className === 'channel') {
-          const channelId = target.id;
-          youtubeStream.src = channels[channelId];
-          livestream.style.display = 'block';
-        }
-      });
-    </script>
-  </body>
+    
+      <p class="lightbulb">💡</p>
+    
+      <script>
+        const channels = {
+          sullyboi: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+          channel2: 'https://www.youtube.com/embed/live_stream?channel=UCqsG5bucp3Ehn-crkNF3I-g&autoplay=1',
+          channel3: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+          channel4: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+          channel5: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1'
+        };
+    
+        const channelList = document.querySelector('.channel-list');
+        const livestream = document.querySelector('.livestream');
+        const youtubeStream = document.querySelector('#youtube-stream');
+        const lightbulb = document.querySelector('.lightbulb');
+    
+        channelList.addEventListener('click', (event) => {
+          const target = event.target;
+          if (target.className === 'channel') {
+            const channelId = target.id;
+            youtubeStream.src = channels[channelId];
+            livestream.style.display = 'block';
+            channelList.style.visibility = 'visible';
+            document.body.style.background = 'linear-gradient(to bottom, #7b1fa2, #4a148c)';
+          }
+        });
+    
+        lightbulb.addEventListener('click', (event) => {
+          if (channelList.style.visibility === 'visible') {
+            channelList.style.visibility = 'hidden';
+            document.body.style.background = 'black';
+          } else {
+            channelList.style.visibility = 'visible';
+            document.body.style.background = 'linear-gradient(to bottom, #7b1fa2, #4a148c)';
+          }
+        });
+        //VERSION 0.3
+      </script>
+    </body>
 </html>
