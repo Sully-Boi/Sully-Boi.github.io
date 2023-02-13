@@ -7,30 +7,124 @@
         height: 100vh;
         font-family: 'Press Start 2P', cursive;
         display: flex;
-        flex-direction: column;
+        justify-content: left;
         align-items: center;
-        justify-content: center;
+        position: relative;
       }
 
       h1 {
         color: white;
         text-shadow: 5px 5px black;
         text-outline: 1px solid black;
-        margin-bottom: 20px;
+        margin-top: 20px;
         user-select: none;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
       }
 
-      p {
-        color: white;
-        font-size: 36px;
-        text-shadow: 5px 5px black;
-        text-outline: 1px solid black;
+      .button {
+        background-color: white;
+        color: #4a148c;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid #4a148c;
+        font-size: 20px;
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        cursor: pointer;
+        box-shadow: 5px 5px black;
+      }
+
+      .livestream {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1120px;
+        height: 630px;
+        background-color: white;
+        z-index: 1;
+      }
+      
+      .channel-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 20px;
+      }
+
+      .channel {
+        background-color: white;
+        color: #4a148c;
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: 1px solid #4a148c;
+        font-size: 20px;
+        margin: 10px 0;
         user-select: none;
+        cursor: pointer;
+      }
+
+      .channel-name {
+        font-weight: bold;
+      }
+
+      .channel-status {
+        font-style: italic;
       }
     </style>
   </head>
   <body>
-    <h1>🗿Lukeman TV🗿</h1>
-    <p>Under Construction 🚧</p>
+    <div class="channel-list">
+      <div class="channel" id="sullyboi">
+        <p class="channel-name">SullyBoi</p>
+      </div>
+      <div class="channel" id="channel2">
+        <p class="channel-name">Channel 2</p>
+      </div>
+      <div class="channel" id="channel3">
+        <p class="channel-name">Channel 3</p>
+      </div><div class="channel" id="channel4">
+        <p class="channel-name">Channel 4</p>
+      </div>
+      <div class="channel" id="channel5">
+        <p class="channel-name">Channel 5</p>
+      </div>
+    </div>
+
+    <h1>🗿 Lukeman TV 🗿</h1>
+
+    <div class="livestream">
+      <iframe id="youtube-stream" width="1120" height="630" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <script>
+      const channels = {
+        sullyboi: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+        channel2: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+        channel3: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+        channel4: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+        channel5: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1'
+      };
+
+      const channelList = document.querySelector('.channel-list');
+      const livestream = document.querySelector('.livestream');
+      const youtubeStream = document.querySelector('#youtube-stream');
+
+      channelList.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.className === 'channel') {
+          const channelId = target.id;
+          youtubeStream.src = channels[channelId];
+          livestream.style.display = 'block';
+        }
+      });
+    </script>
   </body>
 </html>
