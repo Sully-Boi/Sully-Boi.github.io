@@ -12,18 +12,19 @@
       
       .emoji {
         display: inline-block;
-        animation: float 1s ease-in-out infinite;
+        animation: float 2s ease-in-out infinite;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
       }
       
       @keyframes float {
         0% {
-          transform: translatey(0);
+          transform: translate(calc(var(--x) * 10px), calc(var(--y) * 10px));
         }
         50% {
-          transform: translatey(-10px);
+          transform: translate(calc(var(--x) * 10px), calc(var(--y) * -10px));
         }
         100% {
-          transform: translatey(0);
+          transform: translate(calc(var(--x) * 10px), calc(var(--y) * 10px));
         }
       }
     </style>
@@ -68,6 +69,11 @@
         const emojiElement = document.createElement("span");
         emojiElement.classList.add("emoji");
         emojiElement.textContent = emoji;
+        
+        // Add a random x and y offset to each emoji
+        emojiElement.style.setProperty("--x", (Math.random() * 2 - 1).toFixed(2));
+        emojiElement.style.setProperty("--y", (Math.random() * 2 - 1).toFixed(2));
+        
         emojisElement.appendChild(emojiElement);
       });
     </script>
