@@ -9,23 +9,24 @@
         justify-content: center;
         font-size: 72px;
         user-select: none;
-        overflow: hidden;
       }
       
       .emoji {
         display: inline-block;
-        animation: matrix 2s ease-in-out infinite;
+        animation: float 2s ease-in-out infinite;
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         user-select: none;
-        position: absolute;
       }
       
-      @keyframes matrix {
+      @keyframes float {
         0% {
-          transform: translateX(calc(var(--x) * 10px)) translateY(-100%);
+          transform: translate(calc(var(--x) * 10px), calc(var(--y) * 10px));
+        }
+        50% {
+          transform: translate(calc(var(--x) * 10px), calc(var(--y) * -10px));
         }
         100% {
-          transform: translateX(calc(var(--x) * 10px)) translateY(calc(var(--y) * 10px));
+          transform: translate(calc(var(--x) * 10px), calc(var(--y) * 10px));
         }
       }
     </style>
@@ -66,7 +67,7 @@
       
       // Add the shuffled emojis to the HTML
       const emojisElement = document.getElementById("emojis");
-      emojis.forEach((emoji, index) => {
+      emojis.forEach(emoji => {
         const emojiElement = document.createElement("span");
         emojiElement.classList.add("emoji");
         emojiElement.textContent = emoji;
@@ -74,9 +75,6 @@
         // Add a random x and y offset to each emoji
         emojiElement.style.setProperty("--x", (Math.random() * 2 - 1).toFixed(2));
         emojiElement.style.setProperty("--y", (Math.random() * 2 - 1).toFixed(2));
-        
-        // Randomly space out the emojis on the x-axis
-        emojiElement.style.left = `${index * 5}%`;
         
         emojisElement.appendChild(emojiElement);
       });
