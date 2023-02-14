@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
     <style>
       body {
         background: linear-gradient(to bottom, #7b1fa2, #4a148c);
@@ -11,7 +12,6 @@
         align-items: center;
         position: relative;
       }
-
       h1 {
         color: white;
         text-shadow: 5px 5px black;
@@ -51,13 +51,14 @@
       .livestream {
         display: block;
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 45%;
+        left: 45%;
         transform: translate(-50%, -50%);
-        width: 64vw;
-        height: 70vh;
+        width: 55%;
+        height: 55%;
         background-color: linear-gradient(to bottom, #7b1fa2, #4a148c);
         z-index: 1;
+        user-select: none;
       }
 
       .channel-list {
@@ -72,6 +73,7 @@
       #youtube-stream {
         width: 64vw;
         height: 70vh;
+        user-select: none;
       }
 
       .lightbulb {
@@ -82,6 +84,30 @@
         position: absolute;
         bottom: 15px;
         left: 15px;
+        user-select: none;
+      }
+
+      .chat-window {
+        width: 40%;
+        height: 80%;
+        position: absolute;
+        top: 53%;
+        right: -11.5%;
+        transform: translate(0, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+      }
+
+      .chat-window iframe {
+        width: 400px;
+        height: 90%;
+        border: none;
+      }
+
+      .hidden {
+        display: none;
       }
     </style>
   </head>
@@ -93,60 +119,76 @@
       <div class="channel" id="channel2">
         <p class="channel-name">Rusair</p>
       </div>
-     
       <div class="channel" id="channel3">
-        <p class="channel-name">Channel 3</p>
-        </div>
-        <div class="channel" id="channel4">
-          <p class="channel-name">Channel 4</p>
-        </div>
-        <div class="channel" id="channel5">
-          <p class="channel-name">Channel 5</p>
-        </div>
+      <p class="channel-name">Channel 3</p>
+      </div>
+      <div class="channel" id="channel4">
+      <p class="channel-name">Channel 4</p>
+      </div>
+      <div class="channel" id="channel5">
+      <p class="channel-name">Channel 5</p>
+      </div>
       </div>
       <h1>🗿 Lukeman TV 🗿</h1>
-
       <div class="livestream">
-        <iframe id="youtube-stream" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in- picture" allowfullscreen></iframe>
+      <iframe id="youtube-stream" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
-    
+      <div class="chat-window hidden" id="sullyboi-chatroom">
+      <iframe src="https://deadsimplechat.com/A4XQyT-bO"></iframe>
+      </div>
+      <div class="chat-window hidden" id="channel2-chatroom">
+        <iframe src="https://deadsimplechat.com/eZ1QsZbnA"></iframe>
+        </div>
+      <div class="chat-window hidden" id="channel3-chatroom">
+        <iframe src="https://deadsimplechat.com/zGRQ6ip1k"></iframe>
+      </div>
+      <div class="chat-window hidden" id="channel4-chatroom">
+        <iframe src="https://deadsimplechat.com/qKf2Vui_d"></iframe>
+      </div>
       <p class="lightbulb">💡</p>
-    
       <script>
-        const channels = {
-          sullyboi: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
-          channel2: 'https://www.youtube.com/embed/live_stream?channel=UCqsG5bucp3Ehn-crkNF3I-g&autoplay=1',
-          channel3: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
-          channel4: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
-          channel5: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1'
-        };
-    
-        const channelList = document.querySelector('.channel-list');
-        const livestream = document.querySelector('.livestream');
-        const youtubeStream = document.querySelector('#youtube-stream');
-        const lightbulb = document.querySelector('.lightbulb');
-    
-        channelList.addEventListener('click', (event) => {
-          const target = event.target;
-          if (target.className === 'channel') {
-            const channelId = target.id;
-            youtubeStream.src = channels[channelId];
-            livestream.style.display = 'block';
-            channelList.style.visibility = 'visible';
-            document.body.style.background = 'linear-gradient(to bottom, #7b1fa2, #4a148c)';
-          }
-        });
-    
-        lightbulb.addEventListener('click', (event) => {
-          if (channelList.style.visibility === 'visible') {
-            channelList.style.visibility = 'hidden';
-            document.body.style.background = 'black';
-          } else {
-            channelList.style.visibility = 'visible';
-            document.body.style.background = 'linear-gradient(to bottom, #7b1fa2, #4a148c)';
-          }
-        });
-        //VERSION 0.3
-      </script>
-    </body>
+      const channels = {
+      sullyboi: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+      channel2: 'https://www.youtube.com/embed/live_stream?channel=UCqsG5bucp3Ehn-crkNF3I-g&autoplay=1',
+      channel3: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+      channel4: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+      channel5: 'https://www.youtube.com/embed/live_stream?channel=UC3nmV-Fg5hZLzeowbVbHvMQ&autoplay=1',
+      };
+      const channelList = document.querySelector('.channel-list');
+  const livestream = document.querySelector('.livestream');
+  const youtubeStream = document.querySelector('#youtube-stream');
+  const lightbulb = document.querySelector('.lightbulb');
+
+  const chatrooms = {
+    'sullyboi-chatroom': document.querySelector('#sullyboi-chatroom'),
+    'channel2-chatroom': document.querySelector('#channel2-chatroom'),
+    'channel3-chatroom': document.querySelector('#channel3-chatroom'),
+    'channel4-chatroom': document.querySelector('#channel4-chatroom')
+  };
+
+  channelList.addEventListener('click', (event) => {
+    const target = event.target;
+    if (target.className === 'channel-name') {
+      const channelId = target.parentNode.id;
+      youtubeStream.src = channels[channelId];
+      livestream.style.display = 'block';
+      // hide all chatrooms
+      Object.values(chatrooms).forEach((chatroom) => chatroom.classList.add('hidden'));
+      // show the selected chatroom
+      chatrooms[channelId + '-chatroom'].classList.remove('hidden');
+      document.body.style.background = 'linear-gradient(to bottom, #7b1fa2, #4a148c)';
+    }
+  });
+
+  lightbulb.addEventListener('click', (event) => {
+    if (channelList.style.visibility === 'visible') {
+      channelList.style.visibility = 'hidden';
+      document.body.style.background = 'black';
+    } else {
+      channelList.style.visibility = 'visible';
+      document.body.style.background = 'linear-gradient(to bottom, #7b1fa2, #4a148c)';
+    }
+  });
+</script>
+ </body>
 </html>
